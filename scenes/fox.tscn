@@ -1,5 +1,6 @@
-[gd_scene load_steps=54 format=3 uid="uid://b4vmtwibtsy40"]
+[gd_scene load_steps=56 format=3 uid="uid://b4vmtwibtsy40"]
 
+[ext_resource type="Script" uid="uid://dwwvlnhna4eh6" path="res://scenes/fox.gd" id="1_p8a3a"]
 [ext_resource type="Texture2D" uid="uid://c6c48l1dipo2q" path="res://assets/purchased/fox/FoxAttack.png" id="1_q320a"]
 [ext_resource type="Texture2D" uid="uid://w78o50dsnoux" path="res://assets/purchased/fox/FoxDie.png" id="2_0ael4"]
 [ext_resource type="Texture2D" uid="uid://d0nk8vafet4u3" path="res://assets/purchased/fox/FoxHurt.png" id="3_p8a3a"]
@@ -212,7 +213,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p8a3a")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 8.0
 }, {
@@ -258,7 +259,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vbqu4")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 8.0
 }, {
@@ -275,7 +276,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gth13")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
 "speed": 8.0
 }, {
@@ -338,7 +339,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h3q65")
 }],
-"loop": true,
+"loop": false,
 "name": &"sleep",
 "speed": 2.0
 }, {
@@ -360,8 +361,20 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Fox" type="AnimatedSprite2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ael4"]
+size = Vector2(19, 12)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_p8a3a")
+
+[node name="Fox" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_f3swx")
-animation = &"walk"
-frame_progress = 0.7692872
+animation = &"sitting"
+frame_progress = 0.4797623
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 9)
+shape = SubResource("RectangleShape2D_0ael4")
+
+[connection signal="animation_finished" from="Fox" to="." method="_on_fox_animation_finished"]
