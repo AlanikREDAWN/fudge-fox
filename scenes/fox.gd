@@ -14,7 +14,7 @@ func _physics_process(delta: float) -> void:
 	
 	horizontal_movement()
 	
-	#move_and_slide()
+	move_and_slide()
 	
 	if !is_attacking:
 		player_animations()
