@@ -1,7 +1,8 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -250.0
+const CLIMB_SPEED = 100.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -14,9 +15,29 @@ const COYOTE_TIME_THRESHOLD = 0.1
 var jump_buffer_timer = 0.0
 const JUMP_BUFFER_TIME_THRESHOLD = 0.1
 
+var on_ladder: bool
+
 func _physics_process(delta: float) -> void:
+	# climbing
+	if on_ladder == true:
+		#pass
+		#print("fox is sitting")
+		#if $Fox:
+				#$Fox.play("sitting")
+		var climbing_direction = Input.get_axis("up", "down")
+		#velocity.y = climbing_direction * CLIMB_SPEED
+		#velocity.x = 0
+		if climbing_direction:
+			print(climbing_direction)
+			#velocity.y = climbing_direction * CLIMB_SPEED
+			velocity.y = move_toward(velocity.y, climbing_direction * CLIMB_SPEED, CLIMB_SPEED * 5.0 * delta)
+			#velocity.x = 0
+		else:
+			#pass
+			velocity.y = move_toward(velocity.y, 0, CLIMB_SPEED * 5.0 * delta)
+	
 	# gravity
-	if not is_on_floor():
+	if not is_on_floor() and not on_ladder:
 		velocity.y += gravity * delta
 	else:
 		current_air_jumps = air_jumps
@@ -57,13 +78,17 @@ func update_animations():
 	if not $Fox: return
 	
 	if not is_on_floor():
-		if velocity.y < 0:
+		if on_ladder:
+			$Fox.play("sitting")
+		elif velocity.y < 0:
 			$Fox.play("jump")
 		else:
 			$Fox.play("idle")
 	
 	else:
-		if abs(velocity.x) > 5:
+		if on_ladder:
+			$Fox.play("sitting")
+		elif abs(velocity.x) > 5:
 			$Fox.play("walk")
 		else:
 			$Fox.play("idle")
@@ -134,3 +159,14 @@ func update_animations():
 #
 #func _on_fox_animation_finished() -> void:
 	#is_attacking = false
+
+
+func _on_ladder_checker_body_entered(body: Node2D) -> void:
+	on_ladder = true
+	print("on ladder")
+
+
+func _on_ladder_checker_body_exited(body: Node2D) -> void:
+	on_ladder = false
+	#$Fox.play("idle")
+	print("not on ladder")
