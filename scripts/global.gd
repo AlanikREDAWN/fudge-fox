@@ -1,6 +1,6 @@
 extends Node
 
-
+var base_scene = null
 
 var fudge_amount = 0
 var fudge_label = null

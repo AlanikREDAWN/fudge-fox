@@ -4,6 +4,7 @@ class_name BaseScene extends Node
 @onready var entrance_markers: Node2D = $EntranceMarkers
 
 func _ready() -> void:
+	Global.base_scene = self
 	if scene_manager.player:
 		if player:
 			player.queue_free()
@@ -19,5 +20,11 @@ func position_player() -> void:
 	
 	for entrance in entrance_markers.get_children():
 		if entrance is Marker2D and entrance.name == "any" or entrance.name == last_scene:
+			#print("WORKING")
+			player.global_position = entrance.global_position
+
+func respawn():
+	for entrance in entrance_markers.get_children():
+		if entrance is Marker2D and entrance.name == "any":
 			#print("WORKING")
 			player.global_position = entrance.global_position

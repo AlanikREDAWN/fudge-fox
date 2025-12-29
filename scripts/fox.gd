@@ -17,6 +17,9 @@ const JUMP_BUFFER_TIME_THRESHOLD = 0.1
 
 var on_ladder: bool
 
+func respawn():
+	Global.base_scene.respawn()
+
 func _physics_process(delta: float) -> void:
 	# climbing
 	if on_ladder == true:
