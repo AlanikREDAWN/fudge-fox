@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://yg14veo7yeqm"]
+
+[ext_resource type="FontFile" uid="uid://bke0wmtgb6bue" path="res://assets/fonts/Rasterman-y08e.ttf" id="1_c5o4f"]
+[ext_resource type="Script" uid="uid://cvixlp22pmeh5" path="res://scripts/fudge_label.gd" id="2_s4kw2"]
+
+[node name="fudgeLabel" type="CanvasLayer"]
+
+[node name="fudgeLabel" type="Label" parent="."]
+offset_left = 17.0
+offset_top = 22.0
+offset_right = 93.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(0.7882353, 0.50980395, 0.36862746, 1)
+theme_override_fonts/font = ExtResource("1_c5o4f")
+theme_override_font_sizes/font_size = 16
+text = "Fudge: 0"
+script = ExtResource("2_s4kw2")

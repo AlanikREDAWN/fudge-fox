@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b70wlk7q1xo7"]
+
+[ext_resource type="Texture2D" uid="uid://brbdm34jqan45" path="res://assets/fudge/fudge_plain.png" id="1_61omr"]
+[ext_resource type="Script" uid="uid://cflv0qk4wa7yx" path="res://scripts/fudge.gd" id="1_455vm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_455vm"]
+radius = 13.0
+
+[node name="fudge" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_455vm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.1920929e-07, 5.9604645e-08)
+scale = Vector2(0.06463643, 0.06463643)
+texture = ExtResource("1_61omr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_455vm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="collect_fudge" from="." to="." method="_on_collect_fudge"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://b4vmtwibtsy40"]
+[gd_scene load_steps=62 format=3 uid="uid://b4vmtwibtsy40"]
 
 [ext_resource type="Script" uid="uid://dwwvlnhna4eh6" path="res://scripts/fox.gd" id="1_p8a3a"]
 [ext_resource type="Texture2D" uid="uid://c6c48l1dipo2q" path="res://assets/purchased/fox/FoxAttack.png" id="1_q320a"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cj1nuya0ha3en" path="res://assets/purchased/fox/FoxSitting.png" id="6_8fabx"]
 [ext_resource type="Texture2D" uid="uid://jewbqh81ior" path="res://assets/purchased/fox/FoxSleep.png" id="7_e4f0q"]
 [ext_resource type="Texture2D" uid="uid://cfal6uhcrxfiv" path="res://assets/purchased/fox/FoxWalking.png" id="8_i3ljd"]
+[ext_resource type="PackedScene" uid="uid://c1yocdjy0yfpw" path="res://scenes/connection_handler.tscn" id="10_f3swx"]
+[ext_resource type="PackedScene" uid="uid://yg14veo7yeqm" path="res://scenes/fudge_label.tscn" id="11_4hsv8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ufccv"]
 atlas = ExtResource("1_q320a")
@@ -417,7 +419,7 @@ _data = {
 &"move_right": SubResource("Animation_f3swx")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 9
 floor_constant_speed = true
 floor_max_angle = 0.87266463
@@ -426,11 +428,14 @@ script = ExtResource("1_p8a3a")
 [node name="Fox" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_f3swx")
-animation = &"sleep"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_p8a3a")
+
+[node name="connection_handler" parent="." instance=ExtResource("10_f3swx")]
+position = Vector2(0, 6)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = -16
@@ -441,6 +446,8 @@ position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 rotation_smoothing_enabled = true
 rotation_smoothing_speed = 2.0
+
+[node name="fudgeLabel" parent="." instance=ExtResource("11_4hsv8")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Camera2D")

@@ -17,6 +17,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 scene_manager="*res://scripts/scene_manager.gd"
+BgMusic="*res://scenes/bg_music.tscn"
+Global="*res://scripts/global.gd"
 
 [display]
 
@@ -30,6 +32,10 @@ window/stretch/mode="viewport"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+
+[global_group]
+
+player=""
 
 [input]
 
@@ -72,6 +78,7 @@ down={
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="ladder"
+2d_physics/layer_3="collectable"
 2d_physics/layer_4="trigger"
 
 [physics]

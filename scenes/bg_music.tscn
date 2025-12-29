@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqaxy5d6ywk86"]
+
+[ext_resource type="AudioStream" uid="uid://peck7yhjo2u0" path="res://assets/SFX/candy_day.mp3" id="1_f6gl3"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_f6gl3")
+autoplay = true

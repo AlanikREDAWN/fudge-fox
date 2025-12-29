@@ -9,7 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_r77uv"]
 radius = 16.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p0wlc"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_chg43"]
 texture = ExtResource("2_p0wlc")
 0:0/0 = 0
 1:0/0 = 0
@@ -70,7 +70,7 @@ texture = ExtResource("2_p0wlc")
 [sub_resource type="TileSet" id="TileSet_2epne"]
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
-sources/2 = SubResource("TileSetAtlasSource_p0wlc")
+sources/2 = SubResource("TileSetAtlasSource_chg43")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rif6e"]
 texture = ExtResource("2_p0wlc")
