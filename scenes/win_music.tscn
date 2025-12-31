@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2qhfs4qerrkw"]
+
+[ext_resource type="AudioStream" uid="uid://cfqyfoxxk7c5t" path="res://assets/SFX/happy_beat.mp3" id="1_eattx"]
+[ext_resource type="Script" uid="uid://7unsvr5g82bg" path="res://scripts/win_music.gd" id="2_8fiue"]
+
+[node name="win_music" type="AudioStreamPlayer"]
+stream = ExtResource("1_eattx")
+autoplay = true
+script = ExtResource("2_8fiue")

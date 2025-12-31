@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://b4vmtwibtsy40"]
+[gd_scene load_steps=63 format=3 uid="uid://b4vmtwibtsy40"]
 
 [ext_resource type="Script" uid="uid://dwwvlnhna4eh6" path="res://scripts/fox.gd" id="1_p8a3a"]
 [ext_resource type="Texture2D" uid="uid://c6c48l1dipo2q" path="res://assets/purchased/fox/FoxAttack.png" id="1_q320a"]
@@ -363,7 +363,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p8a3a"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4hsv8"]
 
 [sub_resource type="Animation" id="Animation_4hsv8"]
 length = 0.001
@@ -419,6 +419,8 @@ _data = {
 &"move_right": SubResource("Animation_f3swx")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_p8a3a"]
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 9
 floor_constant_speed = true
@@ -432,7 +434,8 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
-shape = SubResource("CircleShape2D_p8a3a")
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_4hsv8")
 
 [node name="connection_handler" parent="." instance=ExtResource("10_f3swx")]
 position = Vector2(0, 6)
@@ -452,6 +455,7 @@ libraries = {
 }
 
 [node name="ladderChecker" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 

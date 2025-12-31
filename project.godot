@@ -16,9 +16,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-scene_manager="*res://scripts/scene_manager.gd"
-BgMusic="*res://scenes/bg_music.tscn"
 Global="*res://scripts/global.gd"
+BgMusic="*res://scenes/bg_music.tscn"
+scene_manager="*res://scripts/scene_manager.gd"
 
 [display]
 
@@ -76,10 +76,11 @@ down={
 
 [layer_names]
 
-2d_physics/layer_1="player"
-2d_physics/layer_2="ladder"
-2d_physics/layer_3="collectable"
-2d_physics/layer_4="trigger"
+2d_physics/layer_1="level"
+2d_physics/layer_2="ladders"
+2d_physics/layer_3="collectables"
+2d_physics/layer_4="player?"
+2d_physics/layer_6="doors"
 
 [physics]
 

@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://dnyiitqgqlkyd"]
+[gd_scene load_steps=14 format=4 uid="uid://dnyiitqgqlkyd"]
 
 [ext_resource type="PackedScene" uid="uid://b4vmtwibtsy40" path="res://scenes/fox.tscn" id="1_3shnc"]
 [ext_resource type="Script" uid="uid://bw22fkmao1dcb" path="res://scripts/level_select.gd" id="1_chg43"]
+[ext_resource type="PackedScene" uid="uid://uoapmgk1yj7n" path="res://scenes/background.tscn" id="2_7plkq"]
 [ext_resource type="Texture2D" uid="uid://3tbwl0qwocar" path="res://assets/purchased/candyland/candy land - chocolate version.png" id="2_p0wlc"]
 [ext_resource type="PackedScene" uid="uid://cgrmqrp341x0v" path="res://scenes/scene_trigger.tscn" id="3_rif6e"]
+[ext_resource type="Texture2D" uid="uid://dldpktoqsr4oc" path="res://assets/coins/coin2.png" id="4_4nqmc"]
 [ext_resource type="Texture2D" uid="uid://bx1lre1f0mekp" path="res://assets/coins/coin1.png" id="4_chg43"]
 [ext_resource type="PackedScene" uid="uid://hkefhybhcypp" path="res://scenes/killzone.tscn" id="6_r77uv"]
 
@@ -73,7 +75,7 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
 sources/2 = SubResource("TileSetAtlasSource_chg43")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rif6e"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4nqmc"]
 texture = ExtResource("2_p0wlc")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, -8, 8, -8, -6, -7, -6, -7, -7, -6, -7, -6, -8, 8, -8)
@@ -180,19 +182,33 @@ texture = ExtResource("2_p0wlc")
 [sub_resource type="TileSet" id="TileSet_rif6e"]
 physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
-sources/0 = SubResource("TileSetAtlasSource_rif6e")
+sources/0 = SubResource("TileSetAtlasSource_4nqmc")
 
 [node name="LevelSelect" type="Node2D"]
 script = ExtResource("1_chg43")
 
-[node name="SceneTrigger" parent="." instance=ExtResource("3_rif6e")]
+[node name="background" parent="." instance=ExtResource("2_7plkq")]
+
+[node name="1SceneTrigger" parent="." instance=ExtResource("3_rif6e")]
 position = Vector2(227, 334)
 connected_scene = "level_1"
+trigger_id = "level_1"
 
-[node name="Sprite2D" type="Sprite2D" parent="SceneTrigger"]
+[node name="Sprite2D" type="Sprite2D" parent="1SceneTrigger"]
 texture = ExtResource("4_chg43")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1SceneTrigger"]
+shape = SubResource("CircleShape2D_r77uv")
+
+[node name="2SceneTrigger" parent="." instance=ExtResource("3_rif6e")]
+position = Vector2(478, 366)
+connected_scene = "level_2"
+trigger_id = "level_2"
+
+[node name="Sprite2D" type="Sprite2D" parent="2SceneTrigger"]
+texture = ExtResource("4_4nqmc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2SceneTrigger"]
 shape = SubResource("CircleShape2D_r77uv")
 
 [node name="Ladders" type="TileMapLayer" parent="."]
@@ -212,5 +228,5 @@ tile_set = SubResource("TileSet_rif6e")
 [node name="any" type="Marker2D" parent="EntranceMarkers"]
 position = Vector2(32, 393)
 
-[node name="killzone" parent="EntranceMarkers" instance=ExtResource("6_r77uv")]
+[node name="killzone" parent="." instance=ExtResource("6_r77uv")]
 position = Vector2(365, 635)

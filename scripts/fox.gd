@@ -1,5 +1,6 @@
 class_name Player extends CharacterBody2D
 
+
 const SPEED = 100.0
 const JUMP_VELOCITY = -250.0
 const CLIMB_SPEED = 100.0
@@ -17,6 +18,16 @@ const JUMP_BUFFER_TIME_THRESHOLD = 0.1
 
 var on_ladder: bool
 
+@onready var camera: Camera2D = $Camera2D
+
+func _ready():
+	add_to_group("player")
+	camera.make_current()
+
+func _enter_tree():
+	if has_node("Camera2D"):
+		$Camera2D.set_as_top_level(false)
+		
 func respawn():
 	Global.base_scene.respawn()
 

@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqaxy5d6ywk86"]
+[gd_scene load_steps=3 format=3 uid="uid://dqaxy5d6ywk86"]
 
 [ext_resource type="AudioStream" uid="uid://peck7yhjo2u0" path="res://assets/SFX/candy_day.mp3" id="1_f6gl3"]
+[ext_resource type="Script" uid="uid://cie316fihjy6w" path="res://scripts/bg_music.gd" id="2_8f2av"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_f6gl3")
 autoplay = true
+script = ExtResource("2_8f2av")
