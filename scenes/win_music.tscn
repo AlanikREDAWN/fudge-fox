@@ -5,5 +5,4 @@
 
 [node name="win_music" type="AudioStreamPlayer"]
 stream = ExtResource("1_eattx")
-autoplay = true
 script = ExtResource("2_8fiue")
