@@ -81,8 +81,10 @@ texture_normal = ExtResource("5_tbmy8")
 stretch_mode = 5
 
 [node name="Settings_Button" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
+disabled = true
 texture_normal = ExtResource("5_oa1go")
 stretch_mode = 0
 
