@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3g5bfgwjocec"]
+[gd_scene load_steps=5 format=3 uid="uid://b3g5bfgwjocec"]
 
 [ext_resource type="FontFile" uid="uid://b8yelg2v8pmdj" path="res://assets/fonts/editundo.ttf" id="1_xpwon"]
 [ext_resource type="FontFile" uid="uid://eqonaxg1oetm" path="res://assets/fonts/slkscr.ttf" id="2_vajfs"]
+[ext_resource type="PackedScene" uid="uid://cawxkwrb0mlhj" path="res://scenes/hotkey_rebind_button.tscn" id="3_j6vtx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vajfs"]
 
@@ -24,7 +25,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 theme_override_font_sizes/font_size = 8
 tab_alignment = 1
-current_tab = 2
+current_tab = 1
 
 [node name="Sound" type="TabBar" parent="TabContainer"]
 visible = false
@@ -78,61 +79,9 @@ theme_override_fonts/font = ExtResource("2_vajfs")
 theme_override_font_sizes/font_size = 6
 text = "12345678"
 
-[node name="Graphics" type="TabBar" parent="TabContainer"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Graphics"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 18
-alignment = 1
-
-[node name="Label" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_vajfs")
-theme_override_font_sizes/font_size = 6
-text = "12345678"
-
-[node name="Label2" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_vajfs")
-theme_override_font_sizes/font_size = 6
-text = "12345678"
-
-[node name="Label3" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_vajfs")
-theme_override_font_sizes/font_size = 6
-text = "12345678"
-
-[node name="Label4" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_vajfs")
-theme_override_font_sizes/font_size = 6
-text = "12345678"
-
-[node name="Label5" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_vajfs")
-theme_override_font_sizes/font_size = 6
-text = "12345678"
-
 [node name="Controls" type="TabBar" parent="TabContainer"]
 layout_mode = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controls"]
 layout_mode = 1
@@ -151,21 +100,41 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls/MarginContainer/ScrollContainer"]
 layout_mode = 2
+theme_override_constants/separation = 26
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxEmpty_vajfs")
+
+[node name="Hotkey_Rebind_Button" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_j6vtx")]
+layout_mode = 2
+
+[node name="Hotkey_Rebind_Button2" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_j6vtx")]
+layout_mode = 2
+action_name = "right"
+
+[node name="Hotkey_Rebind_Button3" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_j6vtx")]
+layout_mode = 2
+action_name = "jump"
+
+[node name="Hotkey_Rebind_Button4" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_j6vtx")]
+layout_mode = 2
+action_name = "up"
+
+[node name="Hotkey_Rebind_Button5" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_j6vtx")]
+layout_mode = 2
+action_name = "down"
 
 [node name="HSeparator2" type="HSeparator" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxEmpty_vajfs")
 
 [node name="Accessibility" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 3
+metadata/_tab_index = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Accessibility"]
 layout_mode = 1

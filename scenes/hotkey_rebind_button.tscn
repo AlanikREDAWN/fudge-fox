@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cawxkwrb0mlhj"]
+[gd_scene load_steps=4 format=3 uid="uid://cawxkwrb0mlhj"]
 
 [ext_resource type="Script" uid="uid://cciqrq6pfsq1q" path="res://scripts/hotkey_rebind_button.gd" id="1_gyo21"]
 [ext_resource type="FontFile" uid="uid://b8yelg2v8pmdj" path="res://assets/fonts/editundo.ttf" id="1_ijtsw"]
 
-[node name="Hotkey_Rebind_Button" type="Control"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gyo21"]
+
+[node name="Hotkey_Rebind_Button" type="Control" groups=["hotkey_button"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,10 +23,10 @@ offset_top = -11.5
 offset_right = 21.0
 offset_bottom = 11.5
 grow_vertical = 2
-alignment = 1
+alignment = 2
 
 [node name="Label" type="Label" parent="HBoxContainer"]
-custom_minimum_size = Vector2(75, 30)
+custom_minimum_size = Vector2(75, 20)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ijtsw")
 theme_override_font_sizes/font_size = 16
@@ -34,11 +36,16 @@ vertical_alignment = 1
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 75
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gyo21")
 
 [node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_ijtsw")
 theme_override_font_sizes/font_size = 16
 toggle_mode = true
 text = "ACTION_KEY"
+
+[connection signal="toggled" from="HBoxContainer/Button" to="." method="_on_button_toggled"]
