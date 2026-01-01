@@ -1,0 +1,196 @@
+[gd_scene load_steps=13 format=3 uid="uid://po8u44fq4kan"]
+
+[ext_resource type="Texture2D" uid="uid://dehhtdsv0tnsp" path="res://assets/purchased/candylandUI/menu - Large H.png" id="1_dkfqi"]
+[ext_resource type="Script" uid="uid://dumkyugsvb2hd" path="res://scripts/instructions.gd" id="1_r7su1"]
+[ext_resource type="Texture2D" uid="uid://dsv46crlw5hhy" path="res://assets/purchased/candylandUI/arrow - left.png" id="2_nisbi"]
+[ext_resource type="Texture2D" uid="uid://c4abslkgkdrye" path="res://assets/purchased/candylandUI/arrow - right.png" id="3_njqp3"]
+[ext_resource type="FontFile" uid="uid://b8yelg2v8pmdj" path="res://assets/fonts/editundo.ttf" id="4_c00ax"]
+[ext_resource type="Texture2D" uid="uid://brbdm34jqan45" path="res://assets/fudge/fudge_plain.png" id="6_c6be6"]
+
+[sub_resource type="Animation" id="Animation_c00ax"]
+resource_name = "typing_text"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_r7su1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fudge:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c6be6"]
+_data = {
+&"RESET": SubResource("Animation_r7su1"),
+&"typing_text": SubResource("Animation_c00ax")
+}
+
+[sub_resource type="Animation" id="Animation_c6be6"]
+resource_name = "fudgeSpin"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fudge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10, 10.01, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 6.2831855, 0.0, 6.2831855]
+}
+
+[sub_resource type="Animation" id="Animation_i2hxp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fudge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2n4j6"]
+_data = {
+&"RESET": SubResource("Animation_i2hxp"),
+&"fudgeSpin": SubResource("Animation_c6be6")
+}
+
+[node name="instructions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r7su1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_dkfqi")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 43.0
+offset_top = 29.0
+offset_right = -39.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.5176471, 0.29803923, 0.1764706, 1)
+theme_override_fonts/normal_font = ExtResource("4_c00ax")
+text = "How to play:
+
+Find and collect the fudge to open the door"
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="TextAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_c6be6")
+}
+
+[node name="fudge" type="Sprite2D" parent="."]
+position = Vector2(159, 130)
+scale = Vector2(0.11887271, 0.11887272)
+texture = ExtResource("6_c6be6")
+
+[node name="FudgeAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2n4j6")
+}
+
+[node name="Back_Button" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -9.0
+offset_right = -121.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_nisbi")
+stretch_mode = 5
+
+[node name="Forward_Button" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 125.0
+offset_top = -9.0
+offset_right = 140.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_njqp3")
+stretch_mode = 5
+
+[connection signal="pressed" from="Back_Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Forward_Button" to="." method="_on_forward_button_pressed"]

@@ -13,6 +13,7 @@ config_version=5
 config/name="Fudge Fox"
 run/main_scene="uid://c2iuqu3r3akfu"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/image="uid://brbdm34jqan45"
 config/icon="res://icon.svg"
 
 [autoload]

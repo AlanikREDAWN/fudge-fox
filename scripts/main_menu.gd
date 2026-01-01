@@ -9,10 +9,11 @@ extends Control
 
 
 
-@export var start_level = preload("res://scenes/level_select.tscn")
+@export var start_level = preload("res://scenes/instructions.tscn")
 
 func _on_start_button_pressed() -> void:
-	get_tree().change_scene_to_packed(start_level)
+	#get_tree().change_scene_to_packed(start_level)
+	get_tree().change_scene_to_file("res://scenes/cutscene_1.tscn")
 
 
 func _on_exit_button_pressed() -> void:
